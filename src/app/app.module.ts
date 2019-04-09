@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RequestRideComponent } from './request-ride/request-ride.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RequestRideComponent
   ],
   imports: [
     BrowserModule,

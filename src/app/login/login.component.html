@@ -1,0 +1,22 @@
+<h1>Login Page</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+
+
+  <label>
+    Email:
+    <input type="text" formControlName="email">
+  </label>
+
+  <label>
+    Password:
+    <input type="text" formControlName="password">
+  </label>
+
+  <input type="submit" values="Login">
+
+</form>
+
+<div>
+  {{loginForm.controls.email.value}}
+</div>

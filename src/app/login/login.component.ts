@@ -3,45 +3,43 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
+
 
   ngOnInit() {
   }
 
-  registerForm: FormGroup;
+  loginForm: FormGroup;
   submitted = false;
-  success = false; // can be used to validate the form
+  success = false;
 
   constructor(private formBuilder: FormBuilder, private http:HttpClient) {
-    this.registerForm = this.formBuilder.group({
-      name: ['Ahsan'],
+    this.loginForm = this.formBuilder.group({
       email: ['ahsanb@iitk.ac.in'],
       password: ['password'],
-      confirmPassword: ['password'],
     })
    }
 
-  registerUser(){
+   loginUser(){
     this.submitted = true;
-    console.log("Registration function called")
+    console.log("Login function called")
 
     var data = {
-      "username": this.registerForm.controls.name.value,
-      "email": this.registerForm.controls.email.value,
-      "password": this.registerForm.controls.password.value,
-      "passwordConf": this.registerForm.controls.confirmPassword.value
+      "email": this.loginForm.controls.email.value,
+      "password": this.loginForm.controls.password.value,
+
     }
 
-    var url = "http://0.0.0.0:11000/rout/register"
+    var url = "http://0.0.0.0:11000/rout/login"
     
     this.postData(url,data)
-  }
+   }
 
-  postData(url,data) {
+   postData(url,data) {
 
     this.http.post(url,data)
         .subscribe(
@@ -55,6 +53,5 @@ export class RegisterComponent implements OnInit {
                 console.log("The POST observable is now completed.");
             });
     }
-  
 
 }
