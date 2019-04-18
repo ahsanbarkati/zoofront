@@ -1,22 +1,5 @@
 <h1>Request Ride Page</h1>
 
-<form [formGroup]="rideForm" (ngSubmit)="requestRide()">
-
-
-  <label>
-    Latitude:
-    <input type="text" formControlName="lat">
-  </label>
-
-  <label>
-    Longitute:
-    <input type="text" formControlName="lon">
-  </label>
-
-  <input type="submit" values="Get Bike">
-
-</form>
-
-<div>
-  {{rideForm.controls.lat.value}}
-</div>
+<button (click)="requestRide()">
+  Find Ride!
+</button>

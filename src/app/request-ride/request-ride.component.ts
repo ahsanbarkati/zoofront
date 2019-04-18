@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,15 +10,11 @@ export class RequestRideComponent implements OnInit {
 
   ngOnInit() {
   }
-rideForm: FormGroup;
-submitted = false;
-success = false;
 
-constructor(private formBuilder: FormBuilder, private http:HttpClient) {
-  this.rideForm = this.formBuilder.group({
-    lat: 15.6,
-    lon: 12.5
-  })
+  submitted = false;
+  success = false;
+
+constructor(private http:HttpClient) {
  }
 
  requestRide(){
