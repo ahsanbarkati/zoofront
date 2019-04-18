@@ -8,67 +8,73 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RequestRideComponent implements OnInit {
 
+  lat = 0;
+  lon = 0;
+
   ngOnInit() {
   }
 
-  submitted = false;
-  success = false;
-
-constructor(private http:HttpClient) {
- }
-
- requestRide(){
-  this.submitted = true;
-  console.log("Login function called")
-
-  var data = {
-    "access_token": "blank_token",
-    "location": this.getCurrentLocation(),
-
+  constructor(private http:HttpClient) {
   }
 
-  var url = "http://0.0.0.0:11000/rout/request"
-  
-  this.getRequest(url,data)
- }
+  requestRide() {
 
- getCurrentLocation(){
-  var lat, lon;
-
-  var geoSuccess = function(position) {
-    // Log and store location
-    console.log(position)
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-  };
-
-  var geoError = function(error) {
-    switch(error.code) {
-      case error.TIMEOUT:
-        // The user didn't accept the callout
-        console.log('User is adamant on not sharing their location')
-        break;
+    var data = {
+      'access_token': 'blank_token',
+      'lat': 'blank',
+      'lon': 'blank',
     }
+
+    this.getCurrentLocation();
+
+    const url = 'http://0.0.0.0:11000/rout/request';
+    setTimeout(() => this.postRequest(url, data), 2000);
+  }
+
+  postRequest(url,data) {
+    data.lat = this.lat;
+    data.lon = this.lon;
+    console.log('sending ', data);
+    this.http.post(url,data)
+        .subscribe(
+            (val) => {
+                console.log("GET call successful value returned in body", val);
+            },
+            response => {
+                console.log("GET call in error", response);
+            },
+            () => {
+                console.log("The GET observable is now completed.");
+            });
+  }
+
+  getCurrentLocation(){
+    var lati, long;
+  
+    var geoSuccess = function(position) {
+      // Log and store location
+      console.log(position)
+      lati = position.coords.latitude;
+      long = position.coords.longitude;
+    };
+  
+    var geoError = function(error) {
+      switch(error.code) {
+        case error.TIMEOUT:
+          // The user didn't accept the callout
+          console.log('User is adamant on not sharing their location')
+          break;
+      }
+    };
+  
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    setTimeout(() => this.waiter(lati, long), 500);
   };
-
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-
-  return {lat, lon}
-};
-
-  getRequest(url,data) {
-
-  this.http.get(url,data)
-      .subscribe(
-          (val) => {
-              console.log("GET call successful value returned in body", val);
-          },
-          response => {
-              console.log("GET call in error", response);
-          },
-          () => {
-              console.log("The GET observable is now completed.");
-          });
+  
+  waiter(lati, long){
+    this.lat = lati;
+    this.lon = long;
+    console.log('Waited')
   }
 
 }
