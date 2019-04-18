@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   success = false;
 
-  constructor(private formBuilder: FormBuilder, private http:HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http:HttpClient, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['ahsanb@iitk.ac.in'],
       password: ['password'],
@@ -45,6 +46,11 @@ export class LoginComponent implements OnInit {
         .subscribe(
             (val) => {
                 console.log("POST call successful value returned in body", val);
+                if(val['Success'] == 'Success!') {
+                  this.router.navigate(['/home']);
+                  sessionStorage.setItem('token', val['Token']);
+                  sessionStorage.setItem('userID', val['UserId']);
+                }
             },
             response => {
                 console.log("POST call in error", response);

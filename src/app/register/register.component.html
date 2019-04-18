@@ -2,7 +2,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
   <label>
     Name:
-    <input type="text" formControlName="name">
+    <input type="text" formControlName="username">
   </label>
 
   <label>
@@ -17,7 +17,7 @@
 
   <label>
     Confirm Password:
-    <input type="text" formControlName="confirmPassword">
+    <input type="text" formControlName="passwordConf">
   </label>
 
   <input type="submit" values="Register">

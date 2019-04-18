@@ -18,10 +18,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http:HttpClient) {
     this.registerForm = this.formBuilder.group({
-      name: ['Ahsan'],
+      username: ['Ahsan'],
       email: ['ahsanb@iitk.ac.in'],
       password: ['password'],
-      confirmPassword: ['password'],
+      passwordConf: ['password'],
     });
    }
 
@@ -30,10 +30,10 @@ export class RegisterComponent implements OnInit {
     console.log('Registration function called')
 
     const data = {
-      'name': 'Ahsan_atest_name',
-      'username': this.registerForm.controls.name.value,
+      'username': this.registerForm.controls.username.value,
       'email': this.registerForm.controls.email.value,
       'password': this.registerForm.controls.password.value,
+      'passwordConf': this.registerForm.controls.passwordConf.value,
     };
 
     const url = 'http://0.0.0.0:11000/rout/register';
