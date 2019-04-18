@@ -27,8 +27,8 @@ constructor(private formBuilder: FormBuilder, private http:HttpClient) {
   console.log("Login function called")
 
   var data = {
-    "email": this.rideForm.controls.lat.value,
-    "password": this.rideForm.controls.lon.value,
+    "access_token": "blank_token",
+    "location": this.getCurrentLocation(),
 
   }
 
@@ -37,7 +37,31 @@ constructor(private formBuilder: FormBuilder, private http:HttpClient) {
   this.getRequest(url,data)
  }
 
- getRequest(url,data) {
+ getCurrentLocation(){
+  var lat, lon;
+
+  var geoSuccess = function(position) {
+    // Log and store location
+    console.log(position)
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+  };
+
+  var geoError = function(error) {
+    switch(error.code) {
+      case error.TIMEOUT:
+        // The user didn't accept the callout
+        console.log('User is adamant on not sharing their location')
+        break;
+    }
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+
+  return {lat, lon}
+};
+
+  getRequest(url,data) {
 
   this.http.get(url,data)
       .subscribe(
