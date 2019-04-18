@@ -1,0 +1,10 @@
+<h1>Query Page</h1>
+<form [formGroup]="queryForm" (ngSubmit)="queryDB()">
+  <label>
+    Query:
+    <input type="text" formControlName="query">
+  </label>
+
+  <input type="submit" values="Send">
+
+</form>

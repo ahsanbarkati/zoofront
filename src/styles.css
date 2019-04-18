@@ -3,6 +3,7 @@
 body, html {
     height: 100%;
     margin: 0 auto;
+    background-image:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
 }
 
 body {

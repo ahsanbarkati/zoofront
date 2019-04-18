@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RequestRideComponent } from './request-ride/request-ride.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RequestRideComponent } from './request-ride/request-ride.component';
     NavComponent,
     HomeComponent,
     LoginComponent,
-    RequestRideComponent
+    RequestRideComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

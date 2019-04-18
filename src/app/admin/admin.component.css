@@ -1,27 +1,4 @@
-  @mixin disable{
-    outline:none;
-    border:none;
-  }
-  
-  @mixin easeme{
-    -webkit-transition:1s ease;
-    -moz-transition:1s ease;
-    -o-transition:1s ease;
-    -ms-transition:1s ease;
-    transition:1s ease;
-  }
-  
-  /*site container*/
-  .wrapper{
-    width:420px;
-    margin:0 auto;
-  }
-  
-  label{
-    color: #FFF;
-  }
-
-  h1{
+h1{
     text-align:center;
     padding:30px 0px 0px 0px;
     font:25px Oswald;
@@ -30,19 +7,15 @@
     text-shadow:#000 0px 1px 5px;
     margin:0px;
   }
-  
-  p{
-    font:13px Open Sans;
-    color:#6E6E6E;
-    text-shadow:#000 0px 1px 5px;
-    margin-bottom:30px;
-  }
-  
-  .form{
+label{
+    color: #FFF;
+}
+
+.form{
     width: 100%;
   }
   
-  input[type="text"],input[type="email"]{
+  input[type="text"],input[type="query"]{
     width:98%;
     padding:15px 0px 15px 8px;
     border-radius:5px;
@@ -89,11 +62,6 @@
     cursor:pointer;
   }
   
-  .name-help,.email-help{
-    display:none;
-    padding:0px;
-    margin:0px 0px 15px 0px;
-  }
   
   .optimize{
     position:fixed;

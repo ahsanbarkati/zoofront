@@ -1,5 +1,4 @@
 <h1>Registration Page</h1>
-
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
   <label>
     Name:
@@ -24,7 +23,3 @@
   <input type="submit" values="Register">
 
 </form>
-
-<div>
-  {{registerForm.controls.name.value}}
-</div>
