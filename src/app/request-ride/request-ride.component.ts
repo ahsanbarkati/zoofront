@@ -11,6 +11,8 @@ export class RequestRideComponent implements OnInit {
   lat = 0;
   lon = 0;
 
+  logged = sessionStorage.getItem('token').length > 0;
+
   ngOnInit() {
   }
 
@@ -20,7 +22,7 @@ export class RequestRideComponent implements OnInit {
   requestRide() {
 
     var data = {
-      'access_token': 'blank_token',
+      'token': 'blank_token',
       'lat': 'blank',
       'lon': 'blank',
     }
@@ -32,6 +34,7 @@ export class RequestRideComponent implements OnInit {
   }
 
   postRequest(url,data) {
+  	data.token = sessionStorage.getItem('token');
     data.lat = this.lat;
     data.lon = this.lon;
     console.log('sending ', data);

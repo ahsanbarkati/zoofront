@@ -10,13 +10,15 @@ import { HttpClient } from '@angular/common/http';
 export class AdminComponent implements OnInit {
 
   queryForm: FormGroup;
-
+  queryResult: any;
+  queryKeys: any;
+  validQuery: any;
   ngOnInit() {
   }
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.queryForm = this.formBuilder.group({
-      query: ['db.values.find()'],
+      query: ['db.users.find()'],
     });
 
    }
@@ -26,7 +28,7 @@ export class AdminComponent implements OnInit {
        'query': this.queryForm.controls.query.value,
      };
 
-     const url = 'http://0.0.0.0:11000/rout/query'
+     const url = 'http://0.0.0.0:11000/rout/admin';
      this.postData(url, data);
    }
 
@@ -36,6 +38,9 @@ export class AdminComponent implements OnInit {
         .subscribe(
             (val) => {
                 console.log('POST call successful value returned in body', val);
+                this.validQuery = val['Success'] ;
+                this.queryResult = val['result'];
+                this.queryKeys = val['keys'];
             },
             response => {
                 console.log('POST call in error', response);

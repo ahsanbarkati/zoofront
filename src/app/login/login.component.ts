@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
                 console.log("POST call successful value returned in body", val);
                 if(val['Success'] == 'Success!') {
                   this.router.navigate(['/home']);
+                  window.location.reload();
                   sessionStorage.setItem('token', val['Token']);
                   sessionStorage.setItem('userID', val['UserId']);
                 }

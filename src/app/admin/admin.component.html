@@ -8,6 +8,34 @@
   <input type="submit" values="Send">
 
 </form>
-<div>
-  Results come here
+
+<div *ngIf="validQuery != 'Failure'">
+  <table class="content-table">
+    <thead>
+      <tr>
+        <td *ngFor="let col of queryKeys">
+            <div *ngIf="col != '__v'">
+                {{col}}
+            </div>
+        </td>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let result of queryResult">
+          <td *ngFor="let key of queryKeys" style="color:#FFF">
+            <div *ngIf="key != '__v'">
+              <div *ngIf="key != 'location'">
+                {{result[key]}}
+              </div>
+              <div *ngIf="key == 'location'">
+                  Lat: {{result[key]['Lat']}} | Lon: {{result[key]['Lon']}}
+              </div>
+            </div>
+          </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="validQuery == 'Failure'" style="color: red; size:7; align-content: center;">
+  <br>
+  Invalid Query
 </div>

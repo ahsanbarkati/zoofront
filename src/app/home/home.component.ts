@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
   profileData: any
   token =  sessionStorage.getItem('token');
   userID = sessionStorage.getItem('userID');
+  
   ngOnInit() {
+    
     var data = {
       "UserId": this.userID,
       "Token": this.token,

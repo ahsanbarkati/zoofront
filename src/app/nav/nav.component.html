@@ -5,10 +5,24 @@
     <nav>
       <ul>
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/requestRide">Request Ride</a></li>
-        <li><a routerLink="/admin">Admin</a></li>
+
+        <div *ngIf="!logged">
+          <li><a routerLink="/register">Register</a></li>
+        </div>
+
+        
+
+        <div *ngIf="!logged">
+            <li><a routerLink="/login">Login</a></li>
+        </div>
+
+        <div *ngIf="logged">
+          <li><a routerLink="/requestRide">Request Ride</a></li>
+        </div>
+
+        <div *ngIf="logged">
+            <li><a  (click)="logoutUser()">Logout</a></li>
+        </div>
       </ul>
     </nav>
   </div>
