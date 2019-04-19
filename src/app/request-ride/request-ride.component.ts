@@ -25,6 +25,7 @@ export class RequestRideComponent implements OnInit {
       'token': 'blank_token',
       'lat': 'blank',
       'lon': 'blank',
+      'userId': sessionStorage.getItem('userID'),
     }
 
     this.getCurrentLocation();

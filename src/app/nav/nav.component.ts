@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
 
   
   token =  sessionStorage.getItem('token');
-  logged = sessionStorage.getItem('token').length > 0;
+  logged = sessionStorage.getItem('token') != null;
 
   constructor() { 
   }
