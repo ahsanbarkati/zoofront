@@ -1,7 +1,33 @@
 <div *ngIf="logged">
   <h1>Request Ride Page</h1>
 
+  <div *ngIf="!responseData">
   <button (click)="requestRide()">
     Find Ride!
   </button>
+</div>
+
+  <div *ngIf="responseData">
+    <h1>Found nearest bike to you. Enjoy your ride</h1>
+      <table class="content-table" >
+          <thead>
+              <tr>
+                <td>BikeName</td>
+                <td>BikeID</td>
+                <td>Latitude</td>
+                <td>Longitude</td>
+              </tr>
+          </thead>
+          <tr style="color:#FFF">
+            <td>{{responseData.bikename}}</td>
+            <td>{{responseData.bikeid}}</td>
+            <td>{{responseData.lat}}</td>
+            <td>{{responseData.long}}</td>
+          </tr>  
+        
+        
+        
+        
+      </table>
+  </div>
 </div>

@@ -8,16 +8,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RequestRideComponent implements OnInit {
 
-  lat = 0;
-  lon = 0;
-
-  logged = sessionStorage.getItem('token').length > 0;
-
-  ngOnInit() {
-  }
-
   constructor(private http:HttpClient) {
   }
+
+  lat = 0;
+  lon = 0;
+  responseData:any
+  logged: any
+
+  ngOnInit() {
+    this.logged= sessionStorage.getItem('token') != null;
+  }
+
+  
 
   requestRide() {
 
@@ -43,6 +46,7 @@ export class RequestRideComponent implements OnInit {
         .subscribe(
             (val) => {
                 console.log("GET call successful value returned in body", val);
+                this.responseData = val;
             },
             response => {
                 console.log("GET call in error", response);
