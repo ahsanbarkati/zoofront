@@ -4,4 +4,35 @@
       <div>Name: {{profileData.name}}</div>
       <div>Email: {{profileData.email}}</div>
 </div>
+<div *ngIf="!history">
+      <button (click)="getHistory()">Get Ride History</button>
+</div>
+<div *ngIf="history">got history
+            <table class="content-table">
+                        <thead>
+                          <tr>
+                            <td *ngFor="let col of keys">
+                                <div *ngIf="col != '__v'">
+                                    {{col}}
+                                </div>
+                            </td>
+                          </tr>
+                        </thead>
+                    
+                        <tr *ngFor="let result of history">
+                              <td *ngFor="let key of keys" style="color:#FFF">
+                                <div *ngIf="key != '__v'">
+                                  <div *ngIf="key != 'Src' && key != 'Dest'">
+                                    {{result[key]}}
+                                  </div>
+                                  <div *ngIf="key == 'Src' || key == 'Dest'">
+                                      Lat: {{result[key]['Lat']}} | Lon: {{result[key]['Lon']}}
+                                  </div>
+                                </div>
+                              </td>
+                        </tr>
+                      </table>
+</div>
+
+
 </font>

@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   
   profileData: any
+  history:any
+  keys:any
   token =  sessionStorage.getItem('token');
   userID = sessionStorage.getItem('userID');
   
@@ -36,6 +38,27 @@ export class HomeComponent implements OnInit {
             (val) => {
                 console.log("POST call successful value returned in body", val);
                 this.profileData = val;
+            },
+            response => {
+                console.log("POST call in error", response);
+            },
+            () => {
+                console.log("The POST observable is now completed.");
+            });
+    }
+
+    getHistory(){
+      const data = {
+        'query': "db.rides.find({UserID:"+this.userID+"})",
+      };
+      console.log("Getting history: ", data)
+      const url = 'http://0.0.0.0:11000/rout/admin';
+      this.http.post(url,data)
+        .subscribe(
+            (val) => {
+                console.log("POST call successful value returned in body", val);
+                this.history = val['result'];
+                this.keys = val['keys']
             },
             response => {
                 console.log("POST call in error", response);

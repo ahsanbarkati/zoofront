@@ -28,7 +28,6 @@ export class RequestRideComponent implements OnInit {
       'token': 'blank_token',
       'lat': 'blank',
       'lon': 'blank',
-      'userId': sessionStorage.getItem('userID'),
     }
 
     this.getCurrentLocation();
@@ -38,7 +37,8 @@ export class RequestRideComponent implements OnInit {
   }
 
   postRequest(url,data) {
-  	data.token = sessionStorage.getItem('token');
+    data.token = sessionStorage.getItem('token');
+    data.userId = sessionStorage.getItem('userID');
     data.lat = this.lat;
     data.lon = this.lon;
     console.log('sending ', data);
