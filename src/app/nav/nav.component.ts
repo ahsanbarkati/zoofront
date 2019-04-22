@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 
@@ -14,7 +15,7 @@ export class NavComponent implements OnInit {
   token =  sessionStorage.getItem('token');
   logged = sessionStorage.getItem('token') != null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
   ngOnInit() {
     
@@ -31,6 +32,7 @@ export class NavComponent implements OnInit {
     this.getRequest(url,data)
     sessionStorage.setItem('token', null);
     sessionStorage.setItem('userID', null);
+    this.router.navigate(['/login']);
   }
 
   getRequest(url,data) {

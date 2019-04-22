@@ -24,10 +24,10 @@
     <tr *ngFor="let result of queryResult">
           <td *ngFor="let key of queryKeys" style="color:#FFF">
             <div *ngIf="key != '__v'">
-              <div *ngIf="key != 'location'">
+              <div *ngIf="key != 'location' && key != 'Src' && key != 'Dest'">
                 {{result[key]}}
               </div>
-              <div *ngIf="key == 'location'">
+              <div *ngIf="key == 'location' || key == 'Src' || key == 'Dest'">
                   Lat: {{result[key]['Lat']}} | Lon: {{result[key]['Lon']}}
               </div>
             </div>

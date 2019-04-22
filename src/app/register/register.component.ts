@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(
             (val) => {
                 console.log('POST call successful value returned in body', val);
+                this.success = val['Success'];
             },
             response => {
                 console.log('POST call in error', response);
