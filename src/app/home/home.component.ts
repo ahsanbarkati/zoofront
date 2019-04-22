@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
             (val) => {
                 console.log("POST call successful value returned in body", val);
                 this.profileData = val;
+                this.profileData['wallet'] = this.profileData['wallet'].toFixed(2);
             },
             response => {
                 console.log("POST call in error", response);

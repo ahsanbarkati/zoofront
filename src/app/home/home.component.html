@@ -3,6 +3,8 @@
 <div *ngIf="profileData">
       <div>Name: {{profileData.name}}</div>
       <div>Email: {{profileData.email}}</div>
+      <div>Wallet Balance: Rs. {{profileData.wallet}}</div>
+      <br><br>
 </div>
 <div *ngIf="!history">
       <button (click)="getHistory()">Get Ride History</button>
